@@ -25,10 +25,11 @@ gem 'activerecord-session_store'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'tzinfo-data'
+gem 'tzinfo'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bcrypt',               '3.1.7'
+gem 'bcrypt',               '3.1.9'
 group :development, :test do
   gem 'byebug'
 

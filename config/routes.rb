@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post  'login'   => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'welcome/index'
-
+  post  'edit_user'    => 'users#update'
   resources :welcome
   resources :users 
 
