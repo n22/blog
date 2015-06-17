@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find params[:id]
     @articles = @user.articles
+     #@article = current_user.article.build if logged_in?
     #@microposts = @user.microposts.paginate(page: params[:page])
   end
 

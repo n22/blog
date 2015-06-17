@@ -1,11 +1,13 @@
 <% if logged_in? %>
 	<%= link_to 'profile', current_user %>
 	<%= link_to 'logout', logout_path, method: "delete" %>
-	<%= link_to 'write post', new_article_path %>
+
 <% else %>
 	<%= link_to 'Login', login_path %>
 
 <% end %>
+
+
 
 <div >
     <% if @user.articles.any? %>
@@ -15,5 +17,6 @@
       </ol>
      
     <% end %>
-  </div>
+  <%= link_to 'create new article', new_article_path %>
+</div>
 

@@ -1,7 +1,21 @@
 class ArticlesController < ApplicationController
+	before_action :logged_in_user, only: [:create, :destroy]
+	def new 
+		@article = Article.new
+	end
+	def index
+		@articles = Article.all
+	end
 	def create
-		@user = User.find(params[:user_id])
-		@article = user.articles.create(article_params)
+		@user = current_user
+		@article = current_user.articles.build(article_params)
+		if @article.save
+			redirect_to @user
+		else
+			render 'static_pages/home'
+		end
+	end
+	def destroy
 	end
 	#http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 =begin
@@ -43,10 +57,10 @@ end
 
 		redirect_to articles_path
 	end
-
+=end
 	private
 	 def article_params
      	params.require(:article).permit(:title, :text)
      end
-=end
+
 end

@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   resources :welcome
   resources :users 
 
+  resource :users 
   resources :articles do 
-    resources :comments
-  
-end
+    resources :comments 
+  end
 resources :sessions
 
   
