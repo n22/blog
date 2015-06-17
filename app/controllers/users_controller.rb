@@ -37,6 +37,12 @@ class UsersController < ApplicationController
     #@microposts = @user.microposts.paginate(page: params[:page])
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to admin_path
+  end
+
   private
   def user_params
   	params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(is_admin: false)

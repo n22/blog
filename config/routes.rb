@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'admins/new'
+
+  get 'admins/show'
+
+  get 'admins/index'
+
   root 'static_pages#home'
   get 'static_pages/home'
 
@@ -8,6 +14,7 @@ Rails.application.routes.draw do
 
   #get 'sessions/new'
 #root 'welcome#index'
+  get 'admin' => 'admins#index'
   get   'signup'  => 'users#new'
   get   'login'   => 'sessions#new'
   post  'login'   => 'sessions#create'
