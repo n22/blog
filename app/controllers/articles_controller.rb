@@ -10,6 +10,9 @@ class ArticlesController < ApplicationController
 		@articles = Article.all
 
 	end
+	def edit 
+		@article = Article.find(params[:id])
+	end
 	def create
 		@user = current_user
 		@article = current_user.articles.build(article_params)
@@ -19,8 +22,17 @@ class ArticlesController < ApplicationController
 			render 'static_pages/home'
 		end
 	end
+	def update
+		@article = Article.find(params[:id])
+		if @article.update(article_params)
+			redirect_to current_user
+		else
+			render 'new'
+		end
+	end
 	def destroy
 	end
+
 	#http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 =begin
 	def index
@@ -66,5 +78,4 @@ end
 	 def article_params
      	params.require(:article).permit(:title, :text)
      end
-
 end
