@@ -32,12 +32,13 @@ class UsersController < ApplicationController
   def show
   	@user = User.find params[:id]
     @articles = @user.articles
+    #@article = @current_users.find(params[:id])
      #@article = current_user.article.build if logged_in?
     #@microposts = @user.microposts.paginate(page: params[:page])
   end
 
   private
   def user_params
-  	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(is_admin: false)
   end
 end

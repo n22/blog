@@ -1,3 +1,7 @@
 <% provide(:title, "Home") %>
 <h1>Home</h1>
+<% if logged_in? %>
+<%= link_to 'profile', current_user %>
+<% else %>
 <%= link_to "login", login_path %>
+<% end %>
