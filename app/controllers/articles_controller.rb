@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	before_action :logged_in_user, only: [:create, :destroy]
+	before_action :logged_in_user, only: [:create, :destroy, :new]
 	def new 
 		@article = Article.new
 	end
@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 	end
 	def index
 		@articles = Article.all
-		
+
 	end
 	def create
 		@user = current_user
